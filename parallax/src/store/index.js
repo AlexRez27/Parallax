@@ -62,11 +62,6 @@ export default new Vuex.Store({
     },
     deleteMark(state, id) { // Ф-я удаления точки
       state.info.open = false;
-      // console.log(state.marks.filter((mark) => mark.id !== id));
-      // state.marks = state.marks.filter((mark) => mark.id !== id);
-      // const i = state.marks.findIndex((item) => item.id === id);
-      // console.log(i, state.marks.length);
-      // state.marks.splice(i, 1);
       document.getElementById(id).remove();
       delete localStorage[id];
     },

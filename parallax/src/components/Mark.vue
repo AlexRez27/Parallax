@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import styles from '../assets/scss/var.scss';
+import vars from '../assets/scss/var.scss';
 
 export default {
   props: {
@@ -17,8 +17,8 @@ export default {
   data() {
     return {
       position: {
-        top: `calc(${this.coords.pageY}% - ${styles.radius})`,
-        left: `calc(${this.coords.pageX}% - ${styles.radius})`,
+        top: `calc(${this.coords.pageY}% - ${vars.radius})`,
+        left: `calc(${this.coords.pageX}% - ${vars.radius})`,
       },
     };
   },
