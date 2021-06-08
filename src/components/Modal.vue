@@ -20,10 +20,10 @@
             </div>
             <div class="input-field">
               <input v-model.trim="price" value="0.00" id="price" type="number" class="validate"
-                    :class="{invalid: $v.name.$dirty && !$v.name.required}">
+                    :class="{invalid: $v.price.$dirty && !$v.price.required}">
               <label class="active" for="price">Цена($)</label>
               <small class="invalid--helper"
-                    :class="{active: $v.name.$dirty && (!$v.name.required || !$v.name.minValue)}"
+                    :class="{active: $v.price.$dirty && (!$v.price.required || !$v.price.minValue)}"
                 > Введите цену
               </small>
             </div>
