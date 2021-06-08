@@ -1,4 +1,4 @@
-# parallax
+# Parallax-test-task
 
 ## Task
 https://docs.google.com/document/d/16APdeUDTtViWWN0W_SGV6f0hz7moMUGY2rumGfGUxh8/edit
