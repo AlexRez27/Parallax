@@ -1,9 +1,10 @@
 <template>
-  <div class="mark" :style="{ 'top': coords.clientY + '%', 'left': coords.clientX + '%' }" >
+  <div class="mark" :style="position" :id="coords.id">
   </div>
 </template>
 
 <script>
+import styles from '../assets/scss/var.scss';
 
 export default {
   props: {
@@ -15,15 +16,17 @@ export default {
   name: 'Mark',
   data() {
     return {
-      x: this.coords.clientX,
-      y: this.coords.clientY,
+      position: {
+        top: `calc(${this.coords.pageY}% - ${styles.radius})`,
+        left: `calc(${this.coords.pageX}% - ${styles.radius})`,
+      },
     };
   },
 };
 </script>
 
 <style lang="scss">
-@import '../assets/scss/var.scss';
+@import  '../assets/scss/var.scss';
   .mark {
     width: $markSize;
     height: $markSize;

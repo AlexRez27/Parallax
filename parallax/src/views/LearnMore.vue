@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="learn">
     <ul class="collection with-header">
       <li class="collection-header"><h4>{{getInfo.name}}</h4></li>
       <li class="collection-item">{{getInfo.description}}</li>
@@ -20,3 +20,9 @@ export default {
   },
 };
 </script>
+
+<style>
+  .learn{
+    text-align: center;
+  }
+</style>

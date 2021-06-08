@@ -1,1 +1,6 @@
 $markSize: 25px;
+$radius: $markSize / 2;
+
+:export {
+  radius: $radius;
+}

@@ -6,7 +6,7 @@
          :coords="mark"
          @click.native="markInfo(mark.id)"
       />
-    <Modal  :e="e" v-if="getModal" />
+    <Modal :e="e" v-if="getModal" />
     <Info v-if="getInfo.open" />
   </div>
 </template>
@@ -33,9 +33,8 @@ export default {
     Info,
   },
   methods: {
-    ...mapMutations(['createMark', 'openModal', 'fromLocalStorageToState', 'markInfo']),
+    ...mapMutations(['openModal', 'fromLocalStorageToState', 'markInfo']),
     newMark(event) {
-      // event.stopPropagation();
       if (!this.getModal) {
         this.openModal();
       }
@@ -60,6 +59,7 @@ export default {
       width: 100%;
       height: auto;
       cursor: pointer;
+      display: block;
     }
   }
 </style>

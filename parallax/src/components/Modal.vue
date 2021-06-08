@@ -56,7 +56,6 @@ export default {
       name: '',
       description: '',
       price: 0.00,
-      id: '',
     };
   },
   validations: {
@@ -69,7 +68,6 @@ export default {
       if (this.$v.$invalid) {
         this.$v.$touch();
       } else {
-        this.id = Date.now();
         const props = {
           name: this.name,
           description: this.description,

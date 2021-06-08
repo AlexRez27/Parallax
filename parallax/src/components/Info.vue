@@ -32,11 +32,8 @@ export default {
   computed: {
     ...mapGetters(['getInfo']),
   },
-  mounted() {
-    console.log(this.getInfo);
-  },
   methods: {
-    ...mapMutations(['deleteMark', 'closeInfo']),
+    ...mapMutations(['deleteMark', 'closeInfo', ' fromLocalStorageToState']),
   },
 };
 </script>
@@ -61,10 +58,10 @@ export default {
     }
   }
 }
-  .close--info{
-    top: -35px;
-    right: -21px;
-  }
+.close--info{
+  top: -35px;
+  right: -21px;
+}
 .link{
   text-align: center;
 }

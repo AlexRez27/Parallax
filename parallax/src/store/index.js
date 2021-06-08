@@ -9,18 +9,21 @@ export default new Vuex.Store({
   state: {
     marks: [],
     info: {},
-    id: 0,
   },
   mutations: {
-    fromLocalStorageToState(state) {
+    fromLocalStorageToState(state) { // Достаю данные из локального хранилища
+      const mark = document.querySelectorAll('.mark');
+      for (let i = 0; i < mark.length; i++) {
+        mark[i].remove();
+      }
       const l = localStorage;
       for (let i = 0; i < l.length; i++) {
         if (Number(l.key(i))) {
           const obj = JSON.parse(localStorage.getItem(l.key(i)));
           const item = {
             id: +l.key(i),
-            clientX: obj.clientX,
-            clientY: obj.clientY,
+            pageX: obj.pageX,
+            pageY: obj.pageY,
             name: obj.name,
             description: obj.description,
             price: obj.price,
@@ -29,26 +32,25 @@ export default new Vuex.Store({
         }
       }
     },
-    createMark(state, { event, props }) {
+    createMark(state, { event, props }) { // Ф-я создания точки
       const parentEl = document.querySelector('.home');
       const size = {
-        width: event.clientX / (parentEl.offsetWidth / 100),
-        height: event.clientY / (parentEl.offsetHeight / 100),
+        width: event.pageX / (parentEl.offsetWidth / 100),
+        height: event.pageY / (parentEl.offsetHeight / 100),
       };
+      const id = `${event.pageX}${event.pageY}`;
       const markItem = {
-        clientX: size.width,
-        clientY: size.height,
+        pageX: size.width,
+        pageY: size.height,
         name: props.name,
         description: props.description,
         price: props.price,
-        id: `${event.clientX}${event.clientY}`,
+        id: +id,
       };
       state.marks.push(markItem);
-      localStorage.setItem(markItem.id, JSON.stringify(markItem));
-      console.log(props);
-      // localStorage.push(markItem);
+      localStorage.setItem(+markItem.id, JSON.stringify(markItem));
     },
-    markInfo(state, id) {
+    markInfo(state, id) { // Ф-я чтоб высветить инофрмацию про точку
       const obj = state.marks.find((item) => item.id === id);
       state.info = {
         id,
@@ -58,12 +60,17 @@ export default new Vuex.Store({
         open: true,
       };
     },
-    deleteMark(state, id) {
+    deleteMark(state, id) { // Ф-я удаления точки
       state.info.open = false;
-      state.marks = state.marks.filter((mark) => mark.id !== id);
+      // console.log(state.marks.filter((mark) => mark.id !== id));
+      // state.marks = state.marks.filter((mark) => mark.id !== id);
+      // const i = state.marks.findIndex((item) => item.id === id);
+      // console.log(i, state.marks.length);
+      // state.marks.splice(i, 1);
+      document.getElementById(id).remove();
       delete localStorage[id];
     },
-    closeInfo(state) {
+    closeInfo(state) { // Закрыть модальное окно с информацией
       state.info.open = false;
     },
   },
